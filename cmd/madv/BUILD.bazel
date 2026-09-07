@@ -1,0 +1,20 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "madv_lib",
+    srcs = ["main.go"],
+    importpath = "madv/cmd/madv",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/reader",
+        "//internal/tui",
+        "@com_github_charmbracelet_bubbletea//:bubbletea",
+        "@org_golang_x_term//:term",
+    ],
+)
+
+go_binary(
+    name = "madv",
+    embed = [":madv_lib"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,29 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "tui",
+    srcs = [
+        "keys.go",
+        "model.go",
+        "statusbar.go",
+    ],
+    importpath = "madv/internal/tui",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/render",
+        "@com_github_charmbracelet_bubbles//key",
+        "@com_github_charmbracelet_bubbles//viewport",
+        "@com_github_charmbracelet_bubbletea//:bubbletea",
+        "@com_github_charmbracelet_lipgloss//:lipgloss",
+    ],
+)
+
+go_test(
+    name = "tui_test",
+    srcs = ["tui_test.go"],
+    embed = [":tui"],
+    deps = [
+        "@com_github_charmbracelet_bubbles//viewport",
+        "@com_github_charmbracelet_bubbletea//:bubbletea",
+    ],
+)

@@ -1,0 +1,226 @@
+module(
+    name = "madv",
+    version = "0.1.0",
+)
+
+bazel_dep(name = "rules_go", version = "0.63.0")
+bazel_dep(name = "gazelle", version = "0.53.0")
+
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.host()
+
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+
+go_deps.module(
+    path = "github.com/alecthomas/chroma/v2",
+    sum = "h1:sfIHpxPyR07/Oylvmcai3X/exDlE8+FA820NTz+9sGw=",
+    version = "v2.20.0",
+)
+go_deps.module(
+    path = "github.com/aymanbagabas/go-osc52/v2",
+    sum = "h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiErDT4WkJ2k=",
+    version = "v2.0.1",
+)
+go_deps.module(
+    path = "github.com/aymerick/douceur",
+    sum = "h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=",
+    version = "v0.2.0",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/bubbles",
+    sum = "h1:12J8/ak/uCZEMQ6KU7pcfwceyjLlWsDLAxB5fXonfvc=",
+    version = "v1.0.0",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/bubbletea",
+    sum = "h1:otUDHWMMzQSB0Pkc87rm691KZ3SWa4KUlvF9nRvCICw=",
+    version = "v1.3.10",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/colorprofile",
+    sum = "h1:a1lO03qTrSIRaK8c3JRxJDZOvhvIeSco3ej+ngLk1kk=",
+    version = "v0.4.1",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/glamour",
+    sum = "h1:AWMLOVFHTsysl4WV8T8QgkQ0s/ZNZo7CiE4WKhk8l08=",
+    version = "v1.0.0",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/lipgloss",
+    sum = "h1:ZR7e0ro+SZZiIZD7msJyA+NjkCNNavuiPBLgerbOziE=",
+    version = "v1.1.1-0.20250404203927-76690c660834",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/x/ansi",
+    sum = "h1:GhV21SiDz/45W9AnV2R61xZMRri5NlLnl6CVF7ihZW8=",
+    version = "v0.11.6",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/x/cellbuf",
+    sum = "h1:ur3pZy0o6z/R7EylET877CBxaiE1Sp1GMxoFPAIztPI=",
+    version = "v0.0.15",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/x/exp/slice",
+    sum = "h1:rLG0Yb6MQSDKdB52aGX55JT1oi0P0Kuaj7wi1bLUpnI=",
+    version = "v0.0.0-20250327172914-2fdc97757edf",
+)
+go_deps.module(
+    path = "github.com/charmbracelet/x/term",
+    sum = "h1:xVRT/S2ZcKdhhOuSP4t5cLi5o+JxklsoEObBSgfgZRk=",
+    version = "v0.2.2",
+)
+go_deps.module(
+    path = "github.com/clipperhouse/displaywidth",
+    sum = "h1:Qb4KOhYwRiN3viMv1v/3cTBlz3AcAZX3+y9OLhMtAtA=",
+    version = "v0.9.0",
+)
+go_deps.module(
+    path = "github.com/clipperhouse/stringish",
+    sum = "h1:+NSqMOr3GR6k1FdRhhnXrLfztGzuG+VuFDfatpWHKCs=",
+    version = "v0.1.1",
+)
+go_deps.module(
+    path = "github.com/clipperhouse/uax29/v2",
+    sum = "h1:x7T0T4eTHDONxFJsL94uKNKPHrclyFI0lm7+w94cO8U=",
+    version = "v2.5.0",
+)
+go_deps.module(
+    path = "github.com/dlclark/regexp2",
+    sum = "h1:Q/sSnsKerHeCkc/jSTNq1oCm7KiVgUMZRDUoRu0JQZQ=",
+    version = "v1.11.5",
+)
+go_deps.module(
+    path = "github.com/erikgeiser/coninput",
+    sum = "h1:Y/CXytFA4m6baUTXGLOoWe4PQhGxaX0KpnayAqC48p4=",
+    version = "v0.0.0-20211004153227-1c3628e74d0f",
+)
+go_deps.module(
+    path = "github.com/gorilla/css",
+    sum = "h1:ntNaBIghp6JmvWnxbZKANoLyuXTPZ4cAMlo6RyhlbO8=",
+    version = "v1.0.1",
+)
+go_deps.module(
+    path = "github.com/lucasb-eyer/go-colorful",
+    sum = "h1:2/yBRLdWBZKrf7gB40FoiKfAWYQ0lqNcbuQwVHXptag=",
+    version = "v1.3.0",
+)
+go_deps.module(
+    path = "github.com/mattn/go-isatty",
+    sum = "h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=",
+    version = "v0.0.20",
+)
+go_deps.module(
+    path = "github.com/mattn/go-localereader",
+    sum = "h1:ygSAOl7ZXTx4RdPYinUpg6W99U8jWvWi9Ye2JC/oIi4=",
+    version = "v0.0.1",
+)
+go_deps.module(
+    path = "github.com/mattn/go-runewidth",
+    sum = "h1:v++JhqYnZuu5jSKrk9RbgF5v4CGUjqRfBm05byFGLdw=",
+    version = "v0.0.19",
+)
+go_deps.module(
+    path = "github.com/microcosm-cc/bluemonday",
+    sum = "h1:MpEUotklkwCSLeH+Qdx1VJgNqLlpY2KXwXFM08ygZfk=",
+    version = "v1.0.27",
+)
+go_deps.module(
+    path = "github.com/muesli/ansi",
+    sum = "h1:ZK8zHtRHOkbHy6Mmr5D264iyp3TiX5OmNcI5cIARiQI=",
+    version = "v0.0.0-20230316100256-276c6243b2f6",
+)
+go_deps.module(
+    path = "github.com/muesli/cancelreader",
+    sum = "h1:3I4Kt4BQjOR54NavqnDogx/MIoWBFa0StPA8ELUXHmA=",
+    version = "v0.2.2",
+)
+go_deps.module(
+    path = "github.com/muesli/reflow",
+    sum = "h1:IFsN6K9NfGtjeggFP+68I4chLZV2yIKsXJFNZ+eWh6s=",
+    version = "v0.3.0",
+)
+go_deps.module(
+    path = "github.com/muesli/termenv",
+    sum = "h1:S5AlUN9dENB57rsbnkPyfdGuWIlkmzJjbFf0Tf5FWUc=",
+    version = "v0.16.0",
+)
+go_deps.module(
+    path = "github.com/rivo/uniseg",
+    sum = "h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=",
+    version = "v0.4.7",
+)
+go_deps.module(
+    path = "github.com/xo/terminfo",
+    sum = "h1:JVG44RsyaB9T2KIHavMF/ppJZNG9ZpyihvCd0w101no=",
+    version = "v0.0.0-20220910002029-abceb7e1c41e",
+)
+go_deps.module(
+    path = "github.com/yuin/goldmark",
+    sum = "h1:GPddIs617DnBLFFVJFgpo1aBfe/4xcvMc3SB5t/D0pA=",
+    version = "v1.7.13",
+)
+go_deps.module(
+    path = "github.com/yuin/goldmark-emoji",
+    sum = "h1:QWfF2FYaXwL74tfGOW5izeiZepUDroDJfWubQI9HTHs=",
+    version = "v1.0.6",
+)
+go_deps.module(
+    path = "golang.org/x/net",
+    sum = "h1:vRMAPTMaeGqVhG5QyLJHqNDwecKTomGeqbnfZyKlBI8=",
+    version = "v0.38.0",
+)
+go_deps.module(
+    path = "golang.org/x/sys",
+    sum = "h1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=",
+    version = "v0.47.0",
+)
+go_deps.module(
+    path = "golang.org/x/term",
+    sum = "h1:NwWyBmoJCbfTHpxrWoZ9C6/VxOf7ic219I8xZZFdrf0=",
+    version = "v0.45.0",
+)
+go_deps.module(
+    path = "golang.org/x/text",
+    sum = "h1:yznKA/E9zq54KzlzBEAWn1NXSQ8DIp/NYMy88xJjl4k=",
+    version = "v0.30.0",
+)
+use_repo(
+    go_deps,
+    "com_github_alecthomas_chroma_v2",
+    "com_github_aymanbagabas_go_osc52_v2",
+    "com_github_aymerick_douceur",
+    "com_github_charmbracelet_bubbles",
+    "com_github_charmbracelet_bubbletea",
+    "com_github_charmbracelet_colorprofile",
+    "com_github_charmbracelet_glamour",
+    "com_github_charmbracelet_lipgloss",
+    "com_github_charmbracelet_x_ansi",
+    "com_github_charmbracelet_x_cellbuf",
+    "com_github_charmbracelet_x_exp_slice",
+    "com_github_charmbracelet_x_term",
+    "com_github_clipperhouse_displaywidth",
+    "com_github_clipperhouse_stringish",
+    "com_github_clipperhouse_uax29_v2",
+    "com_github_dlclark_regexp2",
+    "com_github_erikgeiser_coninput",
+    "com_github_gorilla_css",
+    "com_github_lucasb_eyer_go_colorful",
+    "com_github_mattn_go_isatty",
+    "com_github_mattn_go_localereader",
+    "com_github_mattn_go_runewidth",
+    "com_github_microcosm_cc_bluemonday",
+    "com_github_muesli_ansi",
+    "com_github_muesli_cancelreader",
+    "com_github_muesli_reflow",
+    "com_github_muesli_termenv",
+    "com_github_rivo_uniseg",
+    "com_github_xo_terminfo",
+    "com_github_yuin_goldmark",
+    "com_github_yuin_goldmark_emoji",
+    "org_golang_x_net",
+    "org_golang_x_sys",
+    "org_golang_x_term",
+    "org_golang_x_text",
+)

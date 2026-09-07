@@ -1,0 +1,10 @@
+load("@gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix madv
+gazelle(name = "gazelle")
+
+alias(
+    name = "madv",
+    actual = "//cmd/madv:madv",
+    visibility = ["//visibility:public"],
+)

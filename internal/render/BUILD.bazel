@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "render",
+    srcs = ["render.go"],
+    importpath = "madv/internal/render",
+    visibility = ["//:__subpackages__"],
+    deps = ["@com_github_charmbracelet_glamour//:glamour"],
+)
+
+go_test(
+    name = "render_test",
+    srcs = ["render_test.go"],
+    embed = [":render"],
+)
