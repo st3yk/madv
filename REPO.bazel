@@ -1,0 +1,4 @@
+# Skip Bazel convenience symlinks, including stale ones left behind after the
+# workspace directory was renamed (e.g. bazel-mdv), which `//...` would
+# otherwise descend into and fail on.
+ignore_directories(["bazel-*"])
