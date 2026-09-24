@@ -13,14 +13,14 @@ func createTestModel(lines int) Model {
 	for i := 1; i <= lines; i++ {
 		sb.WriteString("Line item number in document\n\n")
 	}
-	m := NewModel("test.md", sb.String())
+	m := NewModel("test.md", sb.String(), "neutral")
 	// Send initial WindowSizeMsg (width: 80, height: 20)
 	updated, _ := m.Update(tea.WindowSizeMsg{Width: 80, Height: 20})
 	return updated.(Model)
 }
 
 func TestModelInitialization(t *testing.T) {
-	m := NewModel("sample.md", "# Title")
+	m := NewModel("sample.md", "# Title", "neutral")
 	if m.Ready {
 		t.Errorf("model should not be ready before WindowSizeMsg")
 	}
@@ -117,7 +117,7 @@ func TestResizeReflow(t *testing.T) {
 }
 
 func TestSmallTerminalDisplay(t *testing.T) {
-	m := NewModel("test.md", "content")
+	m := NewModel("test.md", "content", "neutral")
 	updated, _ := m.Update(tea.WindowSizeMsg{Width: 8, Height: 2})
 	m = updated.(Model)
 
@@ -128,7 +128,7 @@ func TestSmallTerminalDisplay(t *testing.T) {
 }
 
 func TestEmptyFileView(t *testing.T) {
-	m := NewModel("empty.md", "")
+	m := NewModel("empty.md", "", "neutral")
 	updated, _ := m.Update(tea.WindowSizeMsg{Width: 80, Height: 24})
 	m = updated.(Model)
 

@@ -7,6 +7,7 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//internal/reader",
+        "//internal/render",
         "//internal/tui",
         "@com_github_charmbracelet_bubbletea//:bubbletea",
         "@org_golang_x_term//:term",

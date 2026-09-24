@@ -1,32 +1,17 @@
 package render
 
 import (
-	"os"
 	"strings"
 
 	"github.com/charmbracelet/glamour"
+	"github.com/charmbracelet/glamour/styles"
 )
 
-// Render renders raw markdown into ANSI-styled terminal text using the specified width.
-func Render(markdown string, width int) (string, error) {
-	if strings.TrimSpace(markdown) == "" {
-		return "", nil
-	}
-
-	if width <= 0 {
-		width = 80
-	}
-
-	style := "auto"
-	if os.Getenv("NO_COLOR") != "" {
-		style = "notty"
-	}
-
-	return RenderWithStyle(markdown, width, style)
-}
-
-// RenderWithStyle renders markdown using a specified Glamour style name or path (e.g. "dark", "light", "notty", "auto").
-func RenderWithStyle(markdown string, width int, style string) (string, error) {
+// Render renders raw markdown into ANSI-styled terminal text using the given
+// width and style. The style is either "neutral", one of Glamour's standard
+// style names (e.g. "dark", "light", "notty") or a path to a JSON style file.
+// Resolve the style once with ResolveStyle; Render never probes the terminal.
+func Render(markdown string, width int, style string) (string, error) {
 	if strings.TrimSpace(markdown) == "" {
 		return "", nil
 	}
@@ -36,17 +21,13 @@ func RenderWithStyle(markdown string, width int, style string) (string, error) {
 	}
 
 	var styleOpt glamour.TermRendererOption
-	switch style {
-	case "notty":
-		styleOpt = glamour.WithStandardStyle("notty")
-	case "dark":
-		styleOpt = glamour.WithStandardStyle("dark")
-	case "light":
-		styleOpt = glamour.WithStandardStyle("light")
-	case "auto":
-		fallthrough
+	switch {
+	case style == StyleNeutral || style == "" || style == styles.AutoStyle:
+		styleOpt = glamour.WithStyles(NeutralStyleConfig())
+	case styles.DefaultStyles[style] != nil:
+		styleOpt = glamour.WithStandardStyle(style)
 	default:
-		styleOpt = glamour.WithAutoStyle()
+		styleOpt = glamour.WithStylePath(style)
 	}
 
 	renderer, err := glamour.NewTermRenderer(

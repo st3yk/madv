@@ -15,6 +15,7 @@ import (
 type Model struct {
 	Name       string
 	RawContent string
+	Style      string
 	Viewport   viewport.Model
 	KeyMap     KeyMap
 	Width      int
@@ -23,11 +24,13 @@ type Model struct {
 	Quitting   bool
 }
 
-// NewModel initializes a new TUI model.
-func NewModel(name, rawContent string) Model {
+// NewModel initializes a new TUI model. style must already be resolved (see
+// render.ResolveStyle); the model never probes the terminal itself.
+func NewModel(name, rawContent, style string) Model {
 	return Model{
 		Name:       name,
 		RawContent: rawContent,
+		Style:      style,
 		KeyMap:     DefaultKeyMap(),
 	}
 }
@@ -116,7 +119,7 @@ func (m Model) renderContent(width int) string {
 		return "\n  *(empty document)*\n"
 	}
 
-	rendered, err := render.Render(m.RawContent, width)
+	rendered, err := render.Render(m.RawContent, width, m.Style)
 	if err != nil {
 		return fmt.Sprintf("\n  Error rendering markdown: %v\n", err)
 	}
