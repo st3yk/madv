@@ -142,7 +142,7 @@ func (m Model) View() string {
 	}
 
 	vpView := m.Viewport.View()
-	statusBar := RenderStatusBar(m.Name, m.Viewport, m.Width)
+	statusBar := RenderStatusBar(m.Name, m.Viewport, m.Width, m.Style)
 
 	return fmt.Sprintf("%s\n%s", vpView, statusBar)
 }

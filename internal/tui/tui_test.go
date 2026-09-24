@@ -142,7 +142,7 @@ func TestStatusBarRendering(t *testing.T) {
 	// Short content (<= height)
 	vpShort := viewport.New(80, 20)
 	vpShort.SetContent("Line 1\nLine 2")
-	barShort := RenderStatusBar("sample.md", vpShort, 80)
+	barShort := RenderStatusBar("sample.md", vpShort, 80, "neutral")
 	if !strings.Contains(barShort, "sample.md") {
 		t.Errorf("expected status bar to contain filename, got: %s", barShort)
 	}
@@ -153,7 +153,7 @@ func TestStatusBarRendering(t *testing.T) {
 	// Long content (> height)
 	vpLong := viewport.New(80, 5)
 	vpLong.SetContent("1\n2\n3\n4\n5\n6\n7\n8\n9\n10")
-	barLong := RenderStatusBar("long.md", vpLong, 80)
+	barLong := RenderStatusBar("long.md", vpLong, 80, "neutral")
 	if !strings.Contains(barLong, "Top") {
 		t.Errorf("expected status bar to contain 'Top' for long document at line 0, got: %s", barLong)
 	}
